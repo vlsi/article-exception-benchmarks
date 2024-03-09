@@ -2,7 +2,7 @@ package net.shipilev.perf.exceptions;
 
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Fork;
-import org.openjdk.jmh.annotations.GenerateMicroBenchmark;
+import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Mode;
@@ -28,7 +28,7 @@ public class ThrowingStacklessBench {
         return new Integer(source); // boxing to align with exception instantiation
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     public int plain_inline() {
         try {
             return m1();
@@ -37,7 +37,7 @@ public class ThrowingStacklessBench {
         }
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     @Fork(jvmArgs = "-XX:-Inline")
     public int plain_noInline() {
         try {
@@ -51,7 +51,7 @@ public class ThrowingStacklessBench {
         throw new LilStacklessException(source);
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     public int exception_inline() {
         try {
             return s1();
@@ -60,7 +60,7 @@ public class ThrowingStacklessBench {
         }
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     @Fork(jvmArgs = "-XX:-Inline")
     public int exception_noInline() {
         try {

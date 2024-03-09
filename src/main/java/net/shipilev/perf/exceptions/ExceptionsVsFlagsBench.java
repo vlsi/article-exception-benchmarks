@@ -2,7 +2,7 @@ package net.shipilev.perf.exceptions;
 
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Fork;
-import org.openjdk.jmh.annotations.GenerateMicroBenchmark;
+import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Mode;
@@ -11,14 +11,14 @@ import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.Warmup;
-import org.openjdk.jmh.infra.results.RunResult;
-import org.openjdk.jmh.runner.BenchmarkRecord;
+import org.openjdk.jmh.results.RunResult;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
-import org.openjdk.jmh.runner.parameters.TimeValue;
+import org.openjdk.jmh.runner.options.TimeValue;
 
+import java.util.Collection;
 import java.util.SortedMap;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
@@ -44,7 +44,7 @@ public class ExceptionsVsFlagsBench {
         staticHeadlessException = new LilStacklessException(source);
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     public int dynamic_chain() {
         try {
             return c01();
@@ -53,7 +53,7 @@ public class ExceptionsVsFlagsBench {
         }
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     public int dynamic_rethrow() {
         try {
             return er01();
@@ -62,7 +62,7 @@ public class ExceptionsVsFlagsBench {
         }
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     public int dynamic() {
         try {
             return e01();
@@ -71,7 +71,7 @@ public class ExceptionsVsFlagsBench {
         }
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     public int dynamic_stackless() {
         try {
             return es01();
@@ -80,7 +80,7 @@ public class ExceptionsVsFlagsBench {
         }
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     public int static_() {
         try {
             return s01();
@@ -89,7 +89,7 @@ public class ExceptionsVsFlagsBench {
         }
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     public int static_rethrow() {
         try {
             return sr01();
@@ -98,7 +98,7 @@ public class ExceptionsVsFlagsBench {
         }
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     public int flags() {
         return m01();
     }
@@ -276,21 +276,20 @@ public class ExceptionsVsFlagsBench {
 //                        .outputFormat(OutputFormatType.Silent)
                         .build();
 
-                SortedMap<BenchmarkRecord, RunResult> results = new Runner(opt).run();
+                Collection<RunResult> results = new Runner(opt).run();
 
                 if (!headerPrinted) {
                     System.out.print("ppm, ");
-                    for (BenchmarkRecord br : results.keySet()) {
-                        System.out.print(br.getUsername() + ", ");
-                        System.out.print(br.getUsername() + ":error, ");
-                    }
+//                    for (RunResult br : results) {
+//                        System.out.print(br.() + ", ");
+//                        System.out.print(br.getUsername() + ":error, ");
+//                    }
                     System.out.println();
                     headerPrinted = true;
                 }
 
                 System.out.printf("%d, ", ppm);
-                for (BenchmarkRecord br : results.keySet()) {
-                    RunResult result = results.get(br);
+                for (RunResult result : results) {
                     System.out.printf("%.3f, %.3f, ", result.getPrimaryResult().getScore(), result.getPrimaryResult().getStatistics().getMeanErrorAt(0.99));
                 }
                 System.out.println();

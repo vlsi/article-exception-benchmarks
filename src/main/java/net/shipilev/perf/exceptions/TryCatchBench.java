@@ -2,7 +2,7 @@ package net.shipilev.perf.exceptions;
 
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Fork;
-import org.openjdk.jmh.annotations.GenerateMicroBenchmark;
+import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Mode;
 import org.openjdk.jmh.annotations.OutputTimeUnit;
@@ -43,7 +43,7 @@ public class TryCatchBench {
         return source;
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     public int checked_tryCatch() {
         try {
             return c();
@@ -52,7 +52,7 @@ public class TryCatchBench {
         }
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     public int checked_tryCatch_FinallyEmpty() {
         try {
             return c();
@@ -62,7 +62,7 @@ public class TryCatchBench {
             // empty
         }
     }
-    @GenerateMicroBenchmark
+    @Benchmark
     public int checked_tryCatchFinally() {
         int v = 0;
         try {
@@ -75,12 +75,12 @@ public class TryCatchBench {
         }
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     public int unchecked_plain() {
         return u();
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     public int unchecked_tryCatch() {
         try {
             return u();
@@ -89,7 +89,7 @@ public class TryCatchBench {
         }
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     public int unchecked_tryCatch_FinallyEmpty() {
         try {
             return u();
@@ -99,7 +99,7 @@ public class TryCatchBench {
             // empty
         }
     }
-    @GenerateMicroBenchmark
+    @Benchmark
     public int unchecked_tryCatchFinally() {
         int v = 0;
         try {
@@ -112,12 +112,12 @@ public class TryCatchBench {
         }
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     public int no_plain() {
         return m();
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     public int no_tryCatch() {
         try {
             return m();
@@ -126,7 +126,7 @@ public class TryCatchBench {
         }
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     public int no_tryCatch_FinallyEmpty() {
         try {
             return m();
@@ -136,7 +136,7 @@ public class TryCatchBench {
             // empty
         }
     }
-    @GenerateMicroBenchmark
+    @Benchmark
     public int no_tryCatchFinally() {
         int v = 0;
         try {

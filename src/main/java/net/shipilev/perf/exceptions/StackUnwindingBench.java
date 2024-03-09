@@ -2,7 +2,7 @@ package net.shipilev.perf.exceptions;
 
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Fork;
-import org.openjdk.jmh.annotations.GenerateMicroBenchmark;
+import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Mode;
@@ -57,144 +57,144 @@ public class StackUnwindingBench {
         }
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     public int long_exception_inline() {
         return callLongCat();
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     @Fork(jvmArgs = "-XX:-Inline")
     public int long_exception_noInline() {
         return callLongCat();
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     @Fork(jvmArgs = "-XX:MaxInlineLevel=0")
     public int long_exception_inline_00() {
         return callLongCat();
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     @Fork(jvmArgs = "-XX:MaxInlineLevel=1")
     public int long_exception_inline_01() {
         return callLongCat();
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     @Fork(jvmArgs = "-XX:MaxInlineLevel=2")
     public int long_exception_inline_02() {
         return callLongCat();
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     @Fork(jvmArgs = "-XX:MaxInlineLevel=3")
     public int long_exception_inline_03() {
         return callLongCat();
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     @Fork(jvmArgs = "-XX:MaxInlineLevel=4")
     public int long_exception_inline_04() {
         return callLongCat();
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     @Fork(jvmArgs = "-XX:MaxInlineLevel=5")
     public int long_exception_inline_05() {
         return callLongCat();
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     @Fork(jvmArgs = "-XX:MaxInlineLevel=6")
     public int long_exception_inline_06() {
         return callLongCat();
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     @Fork(jvmArgs = "-XX:MaxInlineLevel=7")
     public int long_exception_inline_07() {
         return callLongCat();
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     @Fork(jvmArgs = "-XX:MaxInlineLevel=8")
     public int long_exception_inline_08() {
         return callLongCat();
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     @Fork(jvmArgs = "-XX:MaxInlineLevel=9")
     public int long_exception_inline_09() {
         return callLongCat();
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     @Fork(jvmArgs = "-XX:MaxInlineLevel=10")
     public int long_exception_inline_10() {
         return callLongCat();
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     @Fork(jvmArgs = "-XX:MaxInlineLevel=11")
     public int long_exception_inline_11() {
         return callLongCat();
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     @Fork(jvmArgs = "-XX:MaxInlineLevel=12")
     public int long_exception_inline_12() {
         return callLongCat();
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     @Fork(jvmArgs = "-XX:MaxInlineLevel=13")
     public int long_exception_inline_13() {
         return callLongCat();
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     @Fork(jvmArgs = "-XX:MaxInlineLevel=14")
     public int long_exception_inline_14() {
         return callLongCat();
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     @Fork(jvmArgs = "-XX:MaxInlineLevel=15")
     public int long_exception_inline_15() {
         return callLongCat();
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     @Fork(jvmArgs = "-XX:MaxInlineLevel=16")
     public int long_exception_inline_16() {
         return callLongCat();
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     @Fork(jvmArgs = "-XX:MaxInlineLevel=17")
     public int long_exception_inline_17() {
         return callLongCat();
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     @Fork(jvmArgs = "-XX:MaxInlineLevel=18")
     public int long_exception_inline_18() {
         return callLongCat();
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     @Fork(jvmArgs = "-XX:MaxInlineLevel=19")
     public int long_exception_inline_19() {
         return callLongCat();
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     @Fork(jvmArgs = "-XX:MaxInlineLevel=20")
     public int long_exception_inline_20() {
         return callLongCat();
     }
 
-    @GenerateMicroBenchmark
+    @Benchmark
     @Fork(jvmArgs = "-XX:MaxInlineLevel=30")
     public int long_exception_inline_30() {
         return callLongCat();
